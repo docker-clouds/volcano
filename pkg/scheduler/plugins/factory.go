@@ -26,6 +26,7 @@ import (
 	"volcano.sh/volcano/pkg/scheduler/plugins/capacity"
 	"volcano.sh/volcano/pkg/scheduler/plugins/cdp"
 	"volcano.sh/volcano/pkg/scheduler/plugins/conformance"
+	"volcano.sh/volcano/pkg/scheduler/plugins/crossqueue"
 	"volcano.sh/volcano/pkg/scheduler/plugins/deviceshare"
 	"volcano.sh/volcano/pkg/scheduler/plugins/drf"
 	"volcano.sh/volcano/pkg/scheduler/plugins/extender"
@@ -57,6 +58,7 @@ func init() {
 	framework.RegisterPluginBuilder(priority.PluginName, priority.New)
 	framework.RegisterPluginBuilder(nodeorder.PluginName, nodeorder.New)
 	framework.RegisterPluginBuilder(conformance.PluginName, conformance.New)
+	framework.RegisterPluginBuilder(crossqueue.PluginName, crossqueue.New)
 	framework.RegisterPluginBuilder(binpack.PluginName, binpack.New)
 	framework.RegisterPluginBuilder(resourcestrategyfit.PluginName, resourcestrategyfit.New)
 	framework.RegisterPluginBuilder(tdm.PluginName, tdm.New)
