@@ -58,7 +58,7 @@ jobs:
       - name: Run verify test
         run: |
           make verify
-          sudo make unit-test
+          sudo -E env "PATH=$PATH" go test -p 8 $(find pkg cmd -type f -name '*_test.go' | sed -r 's|/[^/]+$||' | sort | uniq | sed "s|^|volcano.sh/volcano/|")
         working-directory: ./src/github.com/${{ github.repository }}
 
       - name: Login to GitHub Container Registry
