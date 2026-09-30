@@ -396,6 +396,7 @@ func (ni *NodeInfo) setNodeOthersResource(node *v1.Node) {
 		ni.Others[vnpu.DeviceName] = vnpu.NewNPUDevices(ni.Name, node)
 		ignored_list = append(ignored_list, vnpu.NewNPUDevices(ni.Name, node).GetIgnoredDevices()...)
 	}
+	hami.AscendHAMiVNPUEnable = true
 	if hami.AscendHAMiVNPUEnable {
 		for deviceName, devices := range hami.NewAscendDevices(ni.Name, node) {
 			ni.Others[deviceName] = devices
