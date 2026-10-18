@@ -52,13 +52,13 @@ jobs:
 
       - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4.3.0
         with:
-          path: ~/go/pkg/mod
+          path: /home/runner/work/${{ github.repository }}/pkg/mod
           key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
 
       - name: Run verify test
         run: |
           make verify
-          sudo -E env "PATH=$PATH" go test -p 8 $(find pkg cmd -type f -name '*_test.go' | sed -r 's|/[^/]+$||' | sort | uniq | sed "s|^|volcano.sh/volcano/|")
+          go test -p 8 $(find pkg cmd -type f -name '*_test.go' | sed -r 's|/[^/]+$||' | sort | uniq | sed "s|^|volcano.sh/volcano/|")
         working-directory: ./src/github.com/${{ github.repository }}
 
       - name: Login to GitHub Container Registry
